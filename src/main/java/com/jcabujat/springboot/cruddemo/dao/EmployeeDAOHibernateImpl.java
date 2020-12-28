@@ -20,7 +20,6 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 	// setup constructor injection
 	@Autowired
 	public EmployeeDAOHibernateImpl(EntityManager entityManager) {
-		super();
 		this.entityManager = entityManager;
 	}
 	
@@ -74,9 +73,9 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// delete object with primary
-		Query theQuery =
-				currentSession.createQuery(
+		Query theQuery = currentSession.createQuery(
 						"delete from Employee where id=:employeeId");
+		
 		theQuery.setParameter("employeeId", theId);
 		
 		theQuery.executeUpdate();
